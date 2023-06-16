@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hacker Check-in</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="flex items-center justify-center h-screen">
+      <div class="p-6 bg-white rounded-md shadow-md main">
+        <a
+          href="/download-confirmed"
+          class="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600 focus:outline-none"
+        >
+          Download confirmed hackers
+        </a>
+        <a
+          href="/download-checkedin"
+          class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none"
+        >
+          Download checked-in hackers
+        </a>
+        <br />
+        <br />
+        <h1 class="text-3xl font-bold text-center mb-6">
+          Enter a hacker's name, email, or 3 letter code!
+        </h1>
+        <div class="flex items-center justify-center">
+          <input
+            type="text"
+            placeholder="Search..."
+            id="search-input"
+            class="px-4 py-2 border border-gray-300 rounded-l-md focus:outline-none"
+          />
+          <button
+            class="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-blue-600 focus:outline-none"
+            id="search-button"
+          >
+            Search
+          </button>
+        </div>
+        <div id="search-results" class="pt-6"></div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>

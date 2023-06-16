@@ -8,6 +8,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static("./"));
 require("dotenv").config();
 
+port = process.env.PORT || 80;
+
 const { Readable } = require("stream");
 
 MONGO_URL = process.env.MONGO_URL;
@@ -283,6 +285,6 @@ app.get("/download-checkedin", (req, res) => {
 });
 
 // Start the server
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log("Server started on port 3000");
 });

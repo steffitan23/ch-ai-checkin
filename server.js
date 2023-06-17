@@ -190,13 +190,13 @@ app.get("/download-confirmed", (req, res) => {
 
       // Map the document properties to the CSV fields
       const csvData = documents.map((document) => ({
-        name: document.profile.name,
+        name: document.profile.name || "",
         email: document.email,
         code: document.code,
-        gradYear: document.profile.graduationYear,
-        study: document.profile.study,
-        school: document.profile.school,
-        gender: document.profile.gender,
+        gradYear: document.profile.graduationYear || "",
+        study: document.profile.study || "",
+        school: document.profile.school || "",
+        gender: document.profile.gender || "",
         checkedIn: document.status.checkedIn,
         // Map more fields as needed
       }));
@@ -208,9 +208,12 @@ app.get("/download-confirmed", (req, res) => {
           );
           csvData.forEach((data) => {
             this.push(
-              `${data.name},${data.email},${data.checkedIn},${data.code},${
-                data.gradYear
-              },${data.study},${data.school.replace(",", "")},${data.gender}\n`
+              `${data.name.replace(",", "")},${data.email},${data.checkedIn},${
+                data.code
+              },${data.gradYear},${data.study},${data.school.replace(
+                ",",
+                ""
+              )},${data.gender}\n`
             );
             // Push more fields as needed
           });
@@ -243,13 +246,13 @@ app.get("/download-checkedin", (req, res) => {
 
       // Map the document properties to the CSV fields
       const csvData = documents.map((document) => ({
-        name: document.profile.name,
+        name: document.profile.name || "",
         email: document.email,
         code: document.code,
-        gradYear: document.profile.graduationYear,
-        study: document.profile.study,
-        school: document.profile.school,
-        gender: document.profile.gender,
+        gradYear: document.profile.graduationYear || "",
+        study: document.profile.study || "",
+        school: document.profile.school || "",
+        gender: document.profile.gender || "",
         // Map more fields as needed
       }));
       // Create a writable stream to capture the CSV data
@@ -258,9 +261,9 @@ app.get("/download-checkedin", (req, res) => {
           this.push(`Name, Email, Code, Grad Year, Major, School, Gender\n`);
           csvData.forEach((data) => {
             this.push(
-              `${data.name},${data.email},${data.code},${data.gradYear},${
-                data.study
-              },${data.school.replace(",", "")},${data.gender}\n`
+              `${data.name.replace(",", "")},${data.email},${data.code},${
+                data.gradYear
+              },${data.study},${data.school.replace(",", "")},${data.gender}\n`
             );
             // Push more fields as needed
           });

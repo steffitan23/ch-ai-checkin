@@ -51,13 +51,14 @@ User.find({ "status.confirmed": true }).then((documents) => {
         console.error("Error checking in:", error);
       });
   });
+  console.log("all done!");
 });
 
 codes = [];
 
 function genCode() {
   var result = "";
-  var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var alphabet = "BCDFGHJKLMNPQRSTVWXYZ";
 
   for (var i = 0; i < 3; i++) {
     result += alphabet.charAt(Math.floor(Math.random() * alphabet.length));
